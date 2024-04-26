@@ -1,0 +1,27 @@
+def wagons_sort(wagons_list):
+    stack = []
+    check_number = 1
+    for i in wagons_list:
+        while len(stack) > 0 and stack[-1] == check_number:
+            stack.pop()
+            check_number = check_number + 1
+        
+        if i == check_number:
+            check_number = check_number + 1
+        else:
+            stack.append(i)
+    
+    while len(stack) > 0:
+        if stack.pop() != check_number:
+            return "NO"
+        check_number = check_number + 1
+    
+    return "YES" 
+        
+    
+if __name__ == "__main__":
+    number = int(input())
+    wagons_list =  list(map(int, input().split()))
+    
+    print(wagons_sort(wagons_list))
+    

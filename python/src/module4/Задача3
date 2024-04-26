@@ -1,0 +1,16 @@
+def search_for_less(list_number):
+    stack = []
+    result = [-1] * len(list_number)
+    for i in range(len(list_number)):
+        while len(stack) > 0 and list_number[stack[-1]] > list_number[i]:
+            result[stack.pop()] = i
+        stack.append(i)
+    
+    return result
+
+if __name__ == "__main__":
+    number = int(input())
+    list_number = list(map(int, input().split()))
+    
+    answer = search_for_less(list_number)
+    print(*answer)

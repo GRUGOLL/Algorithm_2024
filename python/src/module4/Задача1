@@ -1,0 +1,19 @@
+def get_psp(string):
+    stack = []
+    extra_symbol = 0
+    for i in string:
+        if i == "(":
+            stack.append(i)
+        elif i == ")":
+            if len(stack) != 0:
+                stack.pop()
+            else:
+                extra_symbol += 1
+    
+    return len(stack) + extra_symbol
+
+if __name__ == "__main__":
+    string = input()
+    
+    print(get_psp(string))
+    
